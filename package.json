@@ -45,6 +45,11 @@
   },
   "homepage": "https://github.com/arya-ankita/todolist#readme",
   "description": "",
+  "husky":{
+    "hooks":{
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "pre-push":"npm run test"

@@ -25,7 +25,7 @@ exports.allUser = async (req, res) => {
 
     res.status(200).json({
       status: 'success',
-      message: 'List of all users',
+       message: 'List of all users',
       data
 
     });
