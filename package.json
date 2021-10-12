@@ -5,13 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node server.js",
-    "test": "nyc mocha ./test/authTest.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run test"
-    }
+    "test": "nyc mocha ./test/authTest.js",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
@@ -49,5 +44,8 @@
     "url": "https://github.com/arya-ankita/todolist/issues"
   },
   "homepage": "https://github.com/arya-ankita/todolist#readme",
-  "description": ""
+  "description": "",
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
 }
