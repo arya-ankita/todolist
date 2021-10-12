@@ -3,20 +3,19 @@ const mongoose = require('mongoose');
 const todoSchema = new mongoose.Schema({
   task: {
     type: String,
-    required: [true, 'Please tell us your work!'],
+    required: [true, 'Please tell us your work!']
   },
   userId: {
-    type: String,
+    type: String
   },
   status: {
-    type: String,
+    type: String
   },
   createdAt: {
     type: String,
-    default: Date.now(),
-  },
+    default: Date.now()
+  }
 });
-
 
 const TodoList = mongoose.model('TodoList', todoSchema);
 

@@ -1,7 +1,8 @@
 const express = require('express');
+const authController = require('../controllers/authController');
+const todoController = require('../controllers/todoController');
+
 const router = express.Router();
-const authController = require('./../controllers/authController');
-const todoController = require('./../controllers/todoController');
 
 router.post('/add', authController.protect, todoController.addwork);
 router.delete('/removetask', authController.protect, todoController.deletework);

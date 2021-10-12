@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "start": "node server.js",
+    "test": "nyc mocha ./test/authTest.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,17 @@
     "morgan": "^1.10.0",
     "nodemailer": "^6.6.5",
     "nodemon": "^2.0.13",
+    "nyc": "^15.1.0",
     "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "mocha": "^9.1.2"
   }
 }

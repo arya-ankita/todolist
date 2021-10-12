@@ -11,21 +11,20 @@ const todoRouter = require('./routes/todoRoute');
 const adminRouter = require('./routes/adminRoute');
 
 app.use((req, res, next) => {
-    console.log("Hello I am middleware");
-    next();
-})
+  // console.log('Hello I am middleware');
+  next();
+});
 
 app.use((req, res, next) => {
-    req.requestTime = new Date().toISOString();
-    console.log(req.headers);
-    next();
+  req.requestTime = new Date().toISOString();
+  next();
 });
 
 // Routes
 // User Routes
 app.use('/user', authRouter);
 
-//TODOlist Routes
+// TODOlist Routes
 app.use('/list', todoRouter);
 
 // Admin Route
