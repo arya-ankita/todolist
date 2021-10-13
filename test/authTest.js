@@ -1,32 +1,65 @@
-const chai = require('chai');
-const chaiHTTP = require('chai-http');
-const app = require('../app');
-
+const chai = require("chai");
+const chaiHTTP = require("chai-http");
 chai.use(chaiHTTP);
 
-const token = require('./token');
+const { promisify } = require("util");
+const request = promisify(require("request"));
 
-console.log(token);
+const token = require("./token");
+const url = "http://localhost:3000";
 
-describe('Auth API', () => {
-  describe('POST /user/signup', () => {
-    it('It should create the user', (done) => {
-      const user = {
-        "name": "Ankita",
-        "role": "admin",
-        "email": "ankita1asdasdads@gmail.com",
-        "password": "testing",
-        "passwordConfirm":"testing"
-    }
-      chai.request(app)
-        .post('/user/signup')
-        //.set({Authorization: `Bearer ${token.Admin}`})
-        .send(user)
-        .end((err, res) => {
-          console.log("error",err,res.status, );
-          chai.expect(res.status).to.equal(201);
-          done();
-        });
-    });
+
+describe("Auth API", () => {
+
+  it("It should create the user", async () => {
+    
+    let data = {
+      name: "Ankita",
+      role: "admin",
+      email: "ankita1239@gmail.com",
+      password: "testing",
+      passwordConfirm: "testing",
+    };
+
+    let options = {
+      method: "POST",
+      url: `${url}/user/signup`,
+      body: JSON.stringify(data),
+      headers: {
+        "content-type": "application/json",
+      },
+    };
+    const { statusCode, body } = await request(options);
+    console.log(statusCode, body);
+
+    chai.assert.isNotNull(body);
+    chai.assert.strictEqual(statusCode, 201);
+  
   });
 });
+
+
+
+describe("Login API", ()=>{
+  it("It should login the user", async()=>{
+    let data = {
+      "email": "ankita123@gmail.com",
+      "password": "testing"
+  }
+
+    let options = {
+      method: "POST",
+      url: `${url}/user/login`,
+      body: JSON.stringify(data),
+      headers: {
+        "content-type": "application/json",
+      },
+    };
+
+    const { statusCode, body } = await request(options);
+    console.log(statusCode, body);
+    chai.assert.isNotNull(body);
+    chai.assert.strictEqual(statusCode, 200);
+
+  })
+})
