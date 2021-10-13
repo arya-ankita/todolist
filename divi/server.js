@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = require('./app');
-const logger = require('./logger');
 
 dotenv.config({ path: './config.env' });
 
@@ -15,11 +14,11 @@ mongoose
   .connect(DB, {
     useNewUrlParser: true
   })
-  .then(()=>logger.info("Database Connected"));
+  .then(()=>console.log("Database Connected"));
 
 // Server
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  logger.info(`App is running on port ${port}`);
+//  console.log(`App is running on port ${port}`);
 });

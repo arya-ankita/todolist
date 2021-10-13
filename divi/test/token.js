@@ -1,0 +1,1 @@
+module.exports = { Admin: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjQyYmQ2OWM5NTliYzAwNTAxMDM0MSIsImlhdCI6MTYzMzk1NDkyMiwiZXhwIjoxNjQxNzMwOTIyfQ.HjPe1eq23sc5dyCK0YhmbiSt5EyIN2wN3nkf8iVsYf8' };
